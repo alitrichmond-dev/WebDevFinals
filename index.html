@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Richmond Alit — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #05070f;
+      --navy-2: #0a0f1e;
+      --blue: #0071e3;
+      --accent: #3b9eff;
+      --white: #f5f7fa;
+      --muted: #8a96a8;
+      --card: rgba(255,255,255,0.035);
+      --border: rgba(120,140,170,0.12);
+      --glass: rgba(10,15,30,0.6);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    html { 
+      scroll-behavior: smooth; 
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 64px;
+      background: rgba(5,7,15,0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { 
+      color: var(--accent); 
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s cubic-bezier(0.23, 1.0, 0.32, 1);
+    }
+
+    nav a:hover { 
+      color: var(--white); 
+    }
+
+    .nav-cta {
+      background: var(--blue);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s cubic-bezier(0.23, 1.0, 0.32, 1);
+    }
+
+    .nav-cta:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+    }
+
+    section { 
+      padding: 110px 64px; 
+    }
+
+    .label {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .divider {
+      width: 48px; 
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--accent));
+      border-radius: 3px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 56px;
+    }
+
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      padding-top: 130px;
+    }
+
+    .hero-text { 
+      max-width: 620px; 
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(0,113,227,0.12);
+      border: 1px solid rgba(0,113,227,0.25);
+      color: var(--accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 4.8rem;
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, #0071e3, #3b9eff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-role {
+      color: var(--muted);
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 22px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-desc {
+      color: #7a8fa8;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin-bottom: 42px;
+      max-width: 520px;
+    }
+
+    .btns { 
+      display: flex; 
+      gap: 14px; 
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.23, 1.0, 0.32, 1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #0082ff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 113, 227, 0.4);
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--border);
+      color: var(--accent);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(59, 158, 255, 0.08);
+      color: var(--white);
+    }
+
+    .hero-avatar {
+      width: 280px; 
+      height: 280px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #0f1a3a, #1a3a7c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+      box-shadow: 
+        0 20px 40px rgba(0,0,0,0.4),
+        inset 0 2px 0 rgba(255,255,255,0.15),
+        inset 0 -2px 0 rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+    }
+
+    .hero-avatar::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    #about {
+      background: rgba(8,12,24,0.6);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-desc {
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+
+    .about-desc strong { 
+      color: var(--white); 
+      font-weight: 600;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 38px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-3px);
+      border-color: rgba(120,140,170,0.25);
+    }
+
+    .stat-num {
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 42px 36px;
+      text-align: center;
+      backdrop-filter: blur(20px);
+    }
+
+    .about-card-avatar {
+      width: 128px; 
+      height: 128px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #0f1a3a, #1a3a7c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: white;
+      margin: 0 auto 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .about-card h3 {
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .about-card-role { 
+      color: var(--accent); 
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .about-card hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 26px 0;
+    }
+
+    .about-card-info {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.9;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px 28px;
+      transition: all 0.3s cubic-bezier(0.23, 1.0, 0.32, 1);
+      backdrop-filter: blur(16px);
+    }
+
+    .skill-card:hover {
+      border-color: rgba(0,113,227,0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    .skill-icon { 
+      font-size: 2.1rem; 
+      margin-bottom: 16px; 
+      display: block;
+    }
+
+    .skill-cat {
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      letter-spacing: -0.01em;
+    }
+
+    .skill-item { 
+      margin-bottom: 16px; 
+    }
+
+    .skill-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .skill-track {
+      height: 5px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), var(--accent));
+      transition: width 0.6s cubic-bezier(0.23, 1.0, 0.32, 1);
+    }
+
+    #projects {
+      background: rgba(8,12,24,0.6);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.23, 1.0, 0.32, 1);
+      backdrop-filter: blur(16px);
+    }
+
+    .project-card:hover {
+      border-color: rgba(0,113,227,0.35);
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
+
+    .project-thumb {
+      height: 168px;
+      background: linear-gradient(145deg, #0a1429, #13254a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: rgba(120, 160, 240, 0.35);
+      letter-spacing: 0.04em;
+      position: relative;
+    }
+
+    .project-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.06) 0%, transparent 60%);
+    }
+
+    .project-body { 
+      padding: 26px 24px; 
+    }
+
+    .tags { 
+      display: flex; 
+      gap: 6px; 
+      flex-wrap: wrap; 
+      margin-bottom: 14px; 
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(0,113,227,0.1);
+      border: 1px solid rgba(0,113,227,0.2);
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+
+    .project-title {
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .project-link {
+      font-size: 0.9rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .project-link:hover { 
+      color: var(--white); 
+    }
+
+    .project-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+
+    .group-title {
+      grid-column: 1 / -1;
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      margin-top: 28px;
+      margin-bottom: 8px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-items { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 14px; 
+      margin-top: 36px; 
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 22px;
+      transition: all 0.2s ease;
+    }
+
+    .contact-item:hover {
+      border-color: rgba(0,113,227,0.25);
+    }
+
+    .contact-icon {
+      width: 44px; 
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(0,113,227,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 3px;
+      font-weight: 600;
+    }
+
+    .contact-value { 
+      font-size: 0.95rem; 
+      font-weight: 600; 
+      color: var(--white);
+    }
+
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      backdrop-filter: blur(20px);
+    }
+
+    .form-group { 
+      margin-bottom: 20px; 
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: var(--white);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus { 
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .form-group textarea { 
+      min-height: 128px; 
+      resize: vertical; 
+      line-height: 1.6;
+    }
+
+    footer {
+      background: rgba(5,7,15,0.7);
+      border-top: 1px solid var(--border);
+      padding: 32px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .footer-logo span { color: var(--accent); }
+
+    .footer-copy { 
+      font-size: 0.85rem; 
+      color: var(--muted); 
+    }
+
+    .footer-links { 
+      display: flex; 
+      gap: 26px; 
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover { 
+      color: var(--white); 
+    }
+
+    @media (max-width: 980px) {
+      nav { padding: 16px 28px; }
+      section { padding: 80px 28px; }
+      #home { 
+        flex-direction: column; 
+        padding-top: 110px; 
+        text-align: center; 
+        gap: 50px;
+      }
+      .hero-text { max-width: 100%; }
+      .btns { justify-content: center; }
+      .hero-avatar { width: 200px; height: 200px; font-size: 2.8rem; }
+      h1 { font-size: 3.4rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+      .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 18px; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.9rem; }
+      .hero-avatar { width: 170px; height: 170px; font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Richmond<span>.</span></div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home">
+    <div class="hero-text">
+      <span class="badge">Available for Opportunities</span>
+      <h1>Richmond<br><span>Alit</span></h1>
+      <p class="hero-role">Web Developer & Designer</p>
+      <p class="hero-desc">I craft clean, purposeful digital experiences with a focus on usability and modern aesthetics. Passionate about turning ideas into polished products.</p>
+      <div class="btns">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-avatar">RA</div>
+  </section>
+
+  <section id="about">
+    <div class="about-grid">
+      <div>
+        <span class="label">About Me</span>
+        <div class="divider"></div>
+        <h2>Who I Am</h2>
+        <p class="about-desc">Hi! I'm <strong>Richmond Alit</strong>, a passionate developer with a keen eye for design. I love building things for the web and finding elegant solutions to complex problems.</p>
+        <p class="about-desc">When I'm not coding, I'm exploring new technologies, working on personal projects, or leveling up my skills. I believe in writing clean, maintainable code and creating experiences that make people's lives easier.</p>
+        <div class="stats">
+          <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Projects Completed</span></div>
+          <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Years Learning</span></div>
+          <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Technologies</span></div>
+          <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Coffee Consumed</span></div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-avatar">RA</div>
+        <h3>Richmond Alit</h3>
+        <p class="about-card-role">Web Developer & Designer</p>
+        <hr>
+        <p class="about-card-info">
+           City of Angeles, Pampanga, Philippines<br>
+           National University Clark<br>
+           Open to Opportunities
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <span class="label">What I Know</span>
+    <div class="divider"></div>
+    <h2>My Skills</h2>
+    <p class="subtitle">A snapshot of the tools and technologies I work with regularly.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <div class="skill-cat">Frontend</div>
+        <div class="skill-item">
+          <div class="skill-top"><span>HTML & CSS</span><span>90%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>JavaScript</span><span>75%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>Java</span><span>65%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:65%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-cat">Data Analytics</div>
+        <div class="skill-item">
+          <div class="skill-top"><span>Python</span><span>70%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>SQL</span><span>60%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:60%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>Microsoft Excel</span><span>80%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🖌️</div>
+        <div class="skill-cat">Design</div>
+        <div class="skill-item">
+          <div class="skill-top"><span>Figma</span><span>70%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>UI/UX Design</span><span>65%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:65%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span>Responsive Design</span><span>85%</span></div>
+          <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <span class="label">My Work</span>
+    <div class="divider"></div>
+    <h2>Projects & Laboratory Activities</h2>
+    <p class="subtitle">A collection of portfolio work and laboratory activities completed from midterms to finals.</p>
+    <div class="projects-grid">
+
+      <h3 class="group-title">Finals</h3>
+
+      <div class="project-card">
+        <div class="project-thumb">FIG</div>
+        <div class="project-body">
+          <div class="project-date">May 12, 2026</div>
+          <div class="tags"><span class="tag">Figma</span><span class="tag">Wireframe</span></div>
+          <div class="project-title">Home Activity #3 - Digital Wireframe Using Figma</div>
+          <p class="project-desc">A digital wireframe of a personal portfolio website created in Figma, based on a paper wireframe. The design includes navigation, about me, skills, projects, and contact information.</p>
+          <a href="https://www.figma.com/design/9LihDDxKbKjTJTJlsjlbgS/ITE205--FIGMA-PORTFOLIO--ALIT?node-id=3-67" target="_blank" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem; margin-top: 8px; display: inline-flex; width: auto;">View in Figma →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">NU</div>
+        <div class="project-body">
+          <div class="project-date">May 4, 2026</div>
+          <div class="tags"><span class="tag">HTML</span></div>
+          <div class="project-title">Finals Lab Activity #1 - NU Quest</div>
+          <p class="project-desc">An HTML activity created using basic webpage structure. The project focuses on building the page with HTML only, without including image files or image references.</p>
+          <a href="activities/nuquest.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem; margin-top: 8px; display: inline-flex; width: auto;">View Activity →</a>
+        </div>
+      </div>
+
+      <h3 class="group-title">Midterms</h3>
+
+      <div class="project-card">
+        <div class="project-thumb">LIST</div>
+        <div class="project-body">
+          <div class="project-date">March 30, 2026</div>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">Lists</span></div>
+          <div class="project-title">Lab Activity #3 - Lists</div>
+          <p class="project-desc">An HTML page about how to make lumpia. The project uses an unordered list for the ingredients and an ordered list for the step-by-step cooking procedure.</p>
+          <a href="activities/lumpia.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem; margin-top: 8px; display: inline-flex; width: auto;">View Activity →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb" style="background-image: url('assets/image/Molecular-lab.jpg'); background-size: cover; background-position: center; position: relative;">
+          <div style="position: absolute; inset: 0; background: rgba(10, 20, 40, 0.45); display: flex; align-items: center; justify-content: center; font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 1.55rem; font-weight: 800; color: rgba(255,255,255,0.9); letter-spacing: 0.04em;">MAP</div>
+        </div>
+        <div class="project-body">
+          <div class="project-date">March 30, 2026</div>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">Image Map</span></div>
+          <div class="project-title">Lab Activity #4 - HTML Image Map</div>
+          <p class="project-desc">An HTML image map project using a campus photo. Different objects in the image are mapped with clickable areas that lead to separate description pages for each object.</p>
+          <a href="activities/imagemap/home.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem; margin-top: 8px; display: inline-flex; width: auto;">View Activity →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">LYR</div>
+        <div class="project-body">
+          <div class="project-date">March 19, 2026</div>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">Text</span></div>
+          <div class="project-title">Lab Activity #1 - Song Lyrics</div>
+          <p class="project-desc">An HTML webpage that displays song lyrics using basic HTML structure, text formatting, headings, and line breaks.</p>
+          <a href="activities/lyrics.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem; margin-top: 8px; display: inline-flex; width: auto;">View Activity →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb">CV</div>
+        <div class="project-body">
+          <div class="project-date">March 19, 2026</div>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">Resume</span></div>
+          <div class="project-title">Lab Activity #2 - Resume</div>
+          <p class="project-desc">An HTML resume webpage created using basic HTML elements to present personal information, education, skills, and other resume details.</p>
+          <a href="activities/resume.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem; margin-top: 8px; display: inline-flex; width: auto;">View Activity →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <span class="label">Get In Touch</span>
+    <div class="divider"></div>
+    <h2>Contact Me</h2>
+    <p class="subtitle">Have a project in mind or just want to say hello? Feel free to reach out!</p>
+    <div class="contact-grid">
+      <div>
+        <p style="color:var(--muted);line-height:1.8;margin-bottom:14px;font-size:1.02rem;">I'm currently open to new opportunities and collaborations. Whether it's a project, a question, or just a chat — my inbox is always open.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div><div class="contact-label">Email</div><div class="contact-value">alitrichmond@email.com</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div><div class="contact-label">Location</div><div class="contact-value">City of Angeles, Pampanga, Philippines</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">💼</div>
+            <div><div class="contact-label">LinkedIn</div><div class="contact-value">linkedin.com/in/alitrichmond321</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🐱</div>
+            <div><div class="contact-label">GitHub</div><div class="contact-value">github.com/alitrichmond-dev</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="e.g. Juan dela Cruz" />
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="Project inquiry, collaboration..." />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell me about your project or just say hi!"></textarea>
+        </div>
+        <a href="#" class="btn btn-primary" style="display:block;text-align:center;">Send Message</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Richmond<span>.</span></div>
+    <p class="footer-copy">© 2026 Richmond Alit. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Activities</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NU Quest | Online Application</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f5f6f7;
+    }
+
+    header {
+        background: #1F6F78;
+        color: white;
+        padding: 15px 30px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .accent-line {
+        height: 6px;
+        background: #F26C4F;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 30px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 6px;
+    }
+
+    h2 {
+        color: #1F6F78;
+        margin-bottom: 15px;
+    }
+
+    h3 {
+        margin-top: 25px;
+        color: #333;
+    }
+
+    .info-box {
+        background: #5FB3B3;
+        color: white;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .grid {
+        display: flex;
+        gap: 15px;
+    }
+
+    .grid div {
+        flex: 1;
+    }
+
+    .section {
+        margin-top: 30px;
+    }
+
+    .actions {
+        margin-top: 25px;
+    }
+
+    button {
+        padding: 10px 22px;
+        border: none;
+        cursor: pointer;
+        font-size: 15px;
+        border-radius: 4px;
+    }
+
+    .submit {
+        background: #1F6F78;
+        color: white;
+    }
+
+    .cancel {
+        background: #F26C4F;
+        color: white;
+    }
+</style>
+</head>
+
+<body>
+
+<header>NU QUEST</header>
+<div class="accent-line"></div>
+
+<div class="container">
+
+<h2>Online Application</h2>
+
+<div class="info-box">
+<strong>REMINDER:</strong><br>
+Please provide your correct and complete information.<br>
+Fields marked with * are required.
+</div>
+
+<form id="applicationForm">
+
+<div class="section">
+<h3>Application Term & Course</h3>
+
+<label>Campus *</label>
+<select required>
+    <option value="">Select campus</option>
+    <option>NU Manila</option>
+    <option>NU Clark</option>
+    <option>NU Baliwag</option>
+</select>
+
+<div class="grid">
+    <div>
+        <label>Academic Year *</label>
+        <select required>
+            <option>2026 - 2027</option>
+            <option>2027 - 2028</option>
+        </select>
+    </div>
+    <div>
+        <label>Academic Term *</label>
+        <select required>
+            <option>1st</option>
+            <option>2nd</option>
+            <option>Summer</option>
+        </select>
+    </div>
+</div>
+
+<label>Applying For *</label>
+<select id="level" required>
+    <option value="">Select level</option>
+    <option value="freshman">Freshman</option>
+    <option value="transferee">Transferee</option>
+    <option value="graduate">Graduate Study</option>
+</select>
+
+<label>Academic Program *</label>
+<select id="program" required>
+    <option value="">Select level first</option>
+</select>
+</div>
+
+<div class="section">
+<h3>Basic Information</h3>
+
+<label>First Name *</label>
+<input type="text" required>
+
+<label>Middle Name</label>
+<input type="text">
+
+<label>Last Name *</label>
+<input type="text" required>
+
+<label>Date of Birth *</label>
+<input type="date" required>
+
+<label>Email *</label>
+<input type="email" required>
+
+<label>Mobile Number *</label>
+<input type="tel" placeholder="09XXXXXXXXX" required>
+</div>
+
+<div class="section info-box">
+<label>
+<input type="checkbox" required>
+ I agree to the Data Privacy Notice
+</label>
+<br>
+<label>
+<input type="checkbox" required>
+ I give consent for data processing
+</label>
+</div>
+
+<div class="actions">
+<button type="submit" class="submit">Create Account</button>
+<button type="reset" class="cancel">Cancel</button>
+</div>
+
+</form>
+</div>
+
+<script>
+const level = document.getElementById("level");
+const program = document.getElementById("program");
+
+const programs = {
+    freshman: ["BSIT", "BSCS", "BSBA"],
+    transferee: ["BSIT (Transferee)", "BSBA (Transferee)"],
+    graduate: ["MBA", "MIT"]
+};
+
+level.addEventListener("change", () => {
+    program.innerHTML = "<option value=''>Select program</option>";
+    if (programs[level.value]) {
+        programs[level.value].forEach(course => {
+            const option = document.createElement("option");
+            option.textContent = course;
+            program.appendChild(option);
+        });
+    }
+});
+
+document.getElementById("applicationForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Application submitted successfully!");
+});
+</script>
+
+</body>
+</html>
